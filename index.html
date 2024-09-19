@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>TravelTales</title>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="https://img.icons8.com/?size=94&id=XsvEZR0h6fav&format=png" alt=""> <h1 class="logo1">Travel</h1><h1 class="logo2">Tales</h1>
+    </div>
+    <div class="header-buttons">
+        <button onclick="showModal('registerModal')">Registrarse</button>
+        <button onclick="showModal('loginModal')">Iniciar Sesión</button>
+    </div>
+</header>
+<nav>
+    <div class="pestañas-div">
+        <a onclick="showSection('destinos')" class="pestañas">Destinos<div class="transition"></div></a>
+        <a onclick="showSection('hoteles')" class="pestañas">Hoteles<div class="transition"></div></a>
+        <a onclick="showSection('restaurantes')" class="pestañas">Restaurantes<div class="transition"></div></a>
+        <a onclick="showSection('favoritos')" id="favoritosLink" style="display: none;" class="pestañas">Mis Favoritos<div class="transition"></div></a>
+        <a onclick="showSection('admin')" id="adminLink" style="display: none;" class="pestañas">Administrador<div class="transition"></div></a>
+    </div>
+</nav>
+<div class="search-container">
+    <label for="searchInput">
+        <input type="text" id="searchInput" placeholder="Busca destinos, hoteles, restaurantes...">
+    </label>
+</div>
+<div id="filterContainer" class="filter-container" style="display: none;">
+    <label for="tipoFiltro">
+        <select id="tipoFiltro" onchange="filtrarFavoritos()">
+            <option value="todos">Todos</option>
+            <option value="destinos">Destinos</option>
+            <option value="hoteles">Hoteles</option>
+            <option value="restaurantes">Restaurantes</option>
+        </select>
+    </label>
+    <label for="destinoFiltro">
+        <select id="destinoFiltro" onchange="filtrarFavoritos()">
+            <option value="todos">Todos los destinos</option>
+        </select></label>
+</div>
+<div id="content" class="content">
+    <!-- El contenido se cargará dinámicamente aquí -->
+</div>
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Registrarse</h2>
+        <form class="admin-form" onsubmit="return registrarUsuario(event)">
+            <label for="regUsername">
+                <input type="text" id="regUsername" placeholder="Nombre de usuario" required>
+            </label>
+            <label for="regEmail">
+                <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+            </label>
+            <label for="regPassword">
+                <input type="password" id="regPassword" placeholder="Contraseña" required>
+            </label>
+            <p class="error-message" id="regError"></p>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+</div>
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form class="admin-form" onsubmit="return loginUsuario(event)">
+            <label for="loginEmail">
+                <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+            </label>
+            <label for="loginPassword">
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+            </label>
+            <p class="error-message" id="loginError"></p>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+<div id="detalleModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="detalleNombre"></h2>
+        <img id="detalleImagen" src="" alt="Imagen del lugar" style="width: 100%; max-height: 300px; object-fit: cover;">
+        <p id="detalleDescripcion"></p>
+        <p id="detalleDestino"></p>
+    </div>
+</div>
+<footer>
+    <p>Our repo: <a href="https://github.com/hrcamilo11/TravelTales"><img width="24" height="24" src="https://img.icons8.com/3d-fluency/94/github.png" alt="github"/> </a></p>
+    <p>&copy; 2024 TravelTales. Todos los derechos reservados.</p>
+</footer>
+
+<script src="./js/main.js"></script>
+</body>
+</html>
